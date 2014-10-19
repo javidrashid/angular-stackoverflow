@@ -1,6 +1,6 @@
 ## Building a Single Page APP of StackOverflow using AngularJS
 
-This is an App hosted at http://www.codeforbrowser.com/demos/angular-stackoverflow that shows how to use Angularjs build a single page application using Stackexchange APIS.
+This is an App hosted at http://codeforbrowser.com/demos/StackOverflow/ that shows how to use Angularjs build a single page application using Stackexchange APIS.
 
 ## Other StackExchange Sites
 
