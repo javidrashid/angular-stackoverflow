@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="stackOverflow">
+  <head>
+    <title>StackOverflow App built With AngularJS</title>
+    <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="css/custom.css" media="screen" title="no title" charset="utf-8" />
+  </head>
+  <body ng-cloak>
+    <h1 ng-controller="tagCtrl">{{appSettings.title}}</h1>
+    <hr>
+    <div>
+    <div ng-controller="answerCtrl">
+    <div ng-controller="questionCtrl">
+    <div class="col-lg-2 ">
+        <ul class="list-group ul-tags loadmoretags" ng-controller="tagCtrl" when-scrolled='loadMoreTags()'>
+        	<li ng-repeat="tag in totalTags" class="list-group-item">
+              <button class="btn btn-primary btn-sm" ng-click="getQuestions(tag.name)">{{tag.name}}</button>
+            </li>
+          <li> <div data-ng-show='loading' class='wait-signal'><img src="css/loader.gif"></div></li>
+        </ul>
+    </div>
+    <div class="col-lg-4" >
+      <ul class="list-group ul-tags" when-questions-scrolled='loadMoreQuestions()'>
+        <li ng-repeat="question in data.items" class="list-group-item col-lg-12" set-background-color>
+          <img class = "img-circle" ng-src={{question.owner.profile_image}} alt={{question.owner.display_name}}/>
+          <a href="#" ng-click="getAnswers(question.question_id)">{{question.title}}
+            <button class="btn btn-info pull-right btn-xs col-lg-1" ng-click="showMore = !showMore">More</button>
+          </a>
+        <div ng-show="showMore" ng-bind-html="question.body">{{question.body}}</div></li>
+         <li> <div data-ng-show='loading' class='wait-signal'><img src="css/loader.gif"></div></li>
+      </ul>
+    </div>
+    </div>
+    <div class="col-lg-6 ul-tags" >
+      <ul class="list-group">
+       <li ng-repeat="answer in answerdata.items" class="list-group-item col-lg-12" ng-if="answerlength !== 0">
+          <h3>Answer By {{answer.owner.display_name}} 
+          <img class = "img-circle" ng-src={{answer.owner.profile_image}} alt={{answer.owner.display_name}}/></h3>
+          <div ng-bind-html="answer.body">{{answer.body}</div>
+         </li>
+         <li class=" remove-padding">
+         <ul class="list-group">
+           <li class="list-group-item col-lg-12"  ng-if="answerlength === 0">
+              This Question has no answer as yet...
+           </li>
+         </ul>
+         </li>
+      </ul>
+    </div>
+     <footer ng-controller="tagCtrl" class="panel-footer pull-right app-version">App Version No:  {{appSettings.version}}</footer>
+    </div>
+    </div>
+    
+    <script type="text/javascript" src="jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="angular.min.1.2.18.js"></script>
+    <script type="text/javascript" src="angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="controllers/tagCtrl.js"></script>
+    <script type="text/javascript" src="controllers/questionCtrl.js"></script>
+     <script type="text/javascript" src="controllers/answerCtrl.js"></script>
+    <script type="text/javascript" src="services/tagService.js"></script>
+    <script type="text/javascript" src="services/questionService.js"></script>
+    <script type="text/javascript" src="services/answerService.js"></script>
+    <script type="text/javascript" src="services/appSettings.js"></script>
+    <script type="text/javascript" src="directives/setbackgroundcolor.js"></script>  
+    <script type="text/javascript" src="directives/moretags.js"></script>   
+    <script type="text/javascript" src="directives/morequestions.js"></script>
+  </body>
+</html>

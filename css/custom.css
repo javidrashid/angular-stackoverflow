@@ -1,0 +1,10 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+.list-group-item img{height:35px;width:35px;}
+.changeColor{background: #FF8080;}
+li.remove-padding{height:0px;list-style: none;}
+.ul-tags{height:640px;overflow:scroll;overflow-x:hidden;}
+ .wait-signal{width:100px;margin:0 auto;}
+ li img.img-circle + a{padding: 17px 43px 20px;}
+ .app-version{font-size: 10px;}
